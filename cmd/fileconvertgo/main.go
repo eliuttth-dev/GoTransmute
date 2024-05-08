@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"github.com/eliuttth-dev/GoTransmute/internal/converter"
+	"../../internal/converter"
 )
 
 func main(){
@@ -42,6 +42,13 @@ func main(){
 	fmt.Println("Conversion process started...")
 	fmt.Println("Input file: %s/n", *inputFile)
 	fmt.Println("Output file: %s/n", *outputFile)
+
+	// Convert file from CSV to JSON
+	if err := converter.ConvertCSVToJSON(*inputFile, *outputFile); err != nil {
+		log.Fatal("Error converting CSV to JSON", err)
+	}
+
+	fmt.Println("Conversion from CSV to JSON successful!")
 }
 
 func runUnitTests(){
