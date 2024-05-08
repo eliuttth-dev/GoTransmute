@@ -47,8 +47,13 @@ func main(){
 	if err := converter.ConvertCSVToJSON(*inputFile, *outputFile); err != nil {
 		log.Fatal("Error converting CSV to JSON", err)
 	}
+  
+  // Convert file from CSV to Markdown
+  if err := converter.ConvertCSVToMarkdown(*inputFile, *outputFile); err != nil {
+    log.Fatal("Error converting CSV to Markdown", err)
+  }
 
-	fmt.Println("Conversion from CSV to JSON successful!")
+	fmt.Println("Conversion successful!")
 }
 
 func runUnitTests(){
