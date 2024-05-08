@@ -21,5 +21,4 @@
 17. As a user, I want to see a list of supported file formats and CLI usage instructions.
 18. As a user, I want to be able to convert plain text files to other compatible formats.
 19. As a user, I want the option to retain additional metadata during the conversion (e.g., author information in Markdown files).
-20. As a user, I want to be able to perform unit tests to ensure the quality and stability of the conversion tool's code.
 
