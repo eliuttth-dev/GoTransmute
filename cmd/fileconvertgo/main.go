@@ -11,7 +11,7 @@ func main(){
 	// Define flags for command-line options
 	inputFile := flag.String("input", "", "Input file or directory path")
 	outputFile := flag.String("output", "", "Output file or directory path")
-	format := flag.String("format", "", "Output format (e.g., json, csv, html)")
+	format := flag.String("format", "", "Output format (e.g., csv=json, json=csv, jsom=md)")
 	// filter := flag.String("filter", "", "Filter for conversion")
 	// configFile := flag.String("config", "", "Custom configuration file path")
 	// overwrite := flag.Bool("overwrite", false, "Overwrite existing files")
@@ -43,26 +43,51 @@ func main(){
 	fmt.Println("Input file: %s/n", *inputFile)
 	fmt.Println("Output file: %s/n", *outputFile)
 
+
+
+
 	// Convert file from CSV to JSON
-  if *format == "json" {
+  if *format == "csv=json" {
     if err := converter.ConvertCSVToJSON(*inputFile, *outputFile); err != nil {
       log.Fatal("Error converting CSV to JSON", err)
     }
   }
   
   // Convert file from CSV to Markdown
-  if *format == "markdown" {
+  if *format == "csv=md" {
     if err := converter.ConvertCSVToMarkdown(*inputFile, *outputFile); err != nil {
       log.Fatal("Error converting CSV to Markdown", err)
     }
   }
 
-  // Convert file form CSV to HTML
-  if *format == "html" {
+  // Convert file from CSV to HTML
+  if *format == "csv=html" {
     if err := converter.ConvertCSVToHTML(*inputFile, *outputFile); err != nil {
       log.Fatal("Error converting CSV to HTML", err)
     }
   }
+
+  // Convert file from JSON to CSV
+  if *format == "json=csv" {
+    if err := converter.ConvertJSONToCSV(*inputFile, *outputFile); err != nil {
+      log.Fatal("Error converting JSON to CSV")
+    }
+  }
+
+  // Convert file from JSON to Markdown
+  if *format == "json=md" {
+    if err := converter.ConvertJSONToMarkdown(*inputFile, *outputFile); err != nil {
+      log.Fatal("Error converting CSV to Markdown", err)
+    }
+  }
+
+  // Convert file from JSON to HTML
+  if *format == "json=html" {
+    if err := converter.ConvertJSONToHTML(*inputFile, *outputFile); err != nil {
+      log.Fatal("Error converting JSON to HTML", err)
+    }
+  }
+
 	fmt.Println("Conversion successful!")
 }
 
