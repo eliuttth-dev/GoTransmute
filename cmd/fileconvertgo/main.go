@@ -44,15 +44,25 @@ func main(){
 	fmt.Println("Output file: %s/n", *outputFile)
 
 	// Convert file from CSV to JSON
-	if err := converter.ConvertCSVToJSON(*inputFile, *outputFile); err != nil {
-		log.Fatal("Error converting CSV to JSON", err)
-	}
+  if *format == "json" {
+    if err := converter.ConvertCSVToJSON(*inputFile, *outputFile); err != nil {
+      log.Fatal("Error converting CSV to JSON", err)
+    }
+  }
   
   // Convert file from CSV to Markdown
-  if err := converter.ConvertCSVToMarkdown(*inputFile, *outputFile); err != nil {
-    log.Fatal("Error converting CSV to Markdown", err)
+  if *format == "markdown" {
+    if err := converter.ConvertCSVToMarkdown(*inputFile, *outputFile); err != nil {
+      log.Fatal("Error converting CSV to Markdown", err)
+    }
   }
 
+  // Convert file form CSV to HTML
+  if *format == "html" {
+    if err := converter.ConvertCSVToHTML(*inputFile, *outputFile); err != nil {
+      log.Fatal("Error converting CSV to HTML", err)
+    }
+  }
 	fmt.Println("Conversion successful!")
 }
 
